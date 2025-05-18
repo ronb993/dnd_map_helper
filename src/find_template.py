@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 
-# Change this to the path where your screenshots are savedhttps://tenor.com/view/hot-coffee-heure-cafe-jaime-le-caf%C3%A9-coffee-break-pause-cafe-gif-27441149
+# Change this to the path where your screenshots are saved
 steam_folder = 'c:\\temp\\screenshots\\'
 # Get the latest screenshot file
 def get_latest_screenshot(folder):
