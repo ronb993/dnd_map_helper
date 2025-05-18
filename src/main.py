@@ -1,8 +1,29 @@
 import cv2
 import numpy as np
+import os
+
+
+# Change this to the path where your screenshots are saved
+steam_folder = 'c:\\temp\\screenshots\\'
+# Get the latest screenshot file
+def get_latest_screenshot(folder):
+    # Get all files in the folder
+    files = os.listdir(folder)
+    # Filter for .png files
+    png_files = [f for f in files if f.endswith('.png')]
+    # Sort by modification time
+    png_files.sort(key=lambda x: os.path.getmtime(os.path.join(folder, x)), reverse=True)
+    # Return the latest file
+    return os.path.join(folder, png_files[0]) if png_files else None
+
+# Get the latest screenshot
+latest_screenshot = get_latest_screenshot(steam_folder)
+if latest_screenshot:
+    print(f"Latest screenshot found: {latest_screenshot}")
+
 
 # Load the images
-image = cv2.imread('img\\screenshot.png')  # The image where you want to search the template
+image = cv2.imread(latest_screenshot)  # The image where you want to search the template
 template = cv2.imread('img\\template.png')  # The template (map section) you want to find
 
 # Convert the image and template to grayscale
@@ -58,9 +79,13 @@ if best_match:
     # Draw rectangle around the matched area
     cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 2)
 
+    # Save the result to a new file
+    output_file = 'img\\output_image.png'  # Specify the output file path
+    cv2.imwrite(output_file, image)
+
     # Show the result
     cv2.imshow(f'Match found at {best_angle} degrees with confidence {best_val:.2f}', image)
-    cv2.waitKey(0)
+    cv2.waitKey(1000)  # Wait for 100 ms
     cv2.destroyAllWindows()
 else:
     print("No match found")
