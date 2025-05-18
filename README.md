@@ -1,3 +1,3 @@
-### This program will take a screenshot from Dark and Darker map, and detect where certain objects are located. 
+### This program will take a screenshot that is created by the user, and detect certain objects that are in the map folder and add squares to an overlay using pyqt. Can be visible or invisible by using f8 and esc to close out the program.
 
-#### This is a WIP, and only works with cave troll on goblin caves. More maps and objects will be added soon. 
+#### This is a WIP, and still needs a lot of work!
