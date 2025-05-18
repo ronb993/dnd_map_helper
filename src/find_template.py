@@ -4,7 +4,8 @@ import os
 
 
 # Change this to the path where your screenshots are saved
-steam_folder = 'c:\\temp\\screenshots\\'
+# currently only works with goblin caves map. 
+steam_folder = 'C:\\Users\\Ron\\Documents\\screenshots'
 # Get the latest screenshot file
 def get_latest_screenshot(folder):
     # Get all files in the folder
@@ -22,13 +23,13 @@ if latest_screenshot:
     print(f"Latest screenshot found: {latest_screenshot}")
 
 
-# Load the images
-image = cv2.imread(latest_screenshot)  # The image where you want to search the template
-template = cv2.imread('maps\\cave_troll.png')  # The template (map section) you want to find
-
-# Convert the image and template to grayscale
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    # Load the images
+    image = cv2.imread(latest_screenshot)  # The image where you want to search the template
+    template = cv2.imread('maps\\cave_troll_test.png')  # The template (map section) you want to find
+    
+    # Convert the image and template to grayscale
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
 
 # Function to rotate the template by a given angle
 def rotate_template(template, angle):
@@ -83,8 +84,8 @@ if best_match:
     output_file = 'img\\output_image.png'  # Specify the output file path
     cv2.imwrite(output_file, image)
 
-    width = int(image.shape[1] * 0.9)  # 50% of original width
-    height = int(image.shape[0] * 0.9)  # 50% of original height
+    width = int(image.shape[1] * 0.8)  # 50% of original width
+    height = int(image.shape[0] * 0.8)  # 50% of original height
     resized_image = cv2.resize(image, (width, height), interpolation=cv2.INTER_LINEAR)
 
     # Display the resized (zoomed-out) image
