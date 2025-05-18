@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 
-# Change this to the path where your screenshots are saved
+# Change this to the path where your screenshots are savedhttps://tenor.com/view/hot-coffee-heure-cafe-jaime-le-caf%C3%A9-coffee-break-pause-cafe-gif-27441149
 steam_folder = 'c:\\temp\\screenshots\\'
 # Get the latest screenshot file
 def get_latest_screenshot(folder):
@@ -24,7 +24,7 @@ if latest_screenshot:
 
 # Load the images
 image = cv2.imread(latest_screenshot)  # The image where you want to search the template
-template = cv2.imread('img\\template.png')  # The template (map section) you want to find
+template = cv2.imread('maps\\cave_troll.png')  # The template (map section) you want to find
 
 # Convert the image and template to grayscale
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -83,9 +83,15 @@ if best_match:
     output_file = 'img\\output_image.png'  # Specify the output file path
     cv2.imwrite(output_file, image)
 
-    # Show the result
-    cv2.imshow(f'Match found at {best_angle} degrees with confidence {best_val:.2f}', image)
-    cv2.waitKey(1000)  # Wait for 100 ms
+    width = int(image.shape[1] * 0.9)  # 50% of original width
+    height = int(image.shape[0] * 0.9)  # 50% of original height
+    resized_image = cv2.resize(image, (width, height), interpolation=cv2.INTER_LINEAR)
+
+    # Display the resized (zoomed-out) image
+    cv2.imshow("Latest Screenshot - Zoomed Out", resized_image)
+
+    #cv2.imshow(f'Match found at {best_angle} degrees with confidence {best_val:.2f}', image)
+    cv2.waitKey(0)  # Wait for 100 ms
     cv2.destroyAllWindows()
 else:
     print("No match found")
