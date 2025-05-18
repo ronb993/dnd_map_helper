@@ -25,7 +25,7 @@ if latest_screenshot:
 
     # Load the images
     image = cv2.imread(latest_screenshot)  # The image where you want to search the template
-    template = cv2.imread('..\\maps\\cave_troll_test.png')  # The template (map section) you want to find
+    template = cv2.imread('maps\\cave_troll_test.png')  # The template (map section) you want to find
     
     # Convert the image and template to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
