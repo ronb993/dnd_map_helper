@@ -5,7 +5,7 @@ import os
 
 # Change this to the path where your screenshots are saved
 # currently only works with goblin caves map. 
-steam_folder = 'C:\\Users\\Ron\\Documents\\screenshots'
+steam_folder = 'c:\\temp\\screenshots\\'
 # Get the latest screenshot file
 def get_latest_screenshot(folder):
     # Get all files in the folder
